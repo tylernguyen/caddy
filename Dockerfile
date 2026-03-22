@@ -7,6 +7,7 @@ RUN xcaddy build \
     --with github.com/caddy-dns/cloudflare=github.com/ogerman/cloudflare@master \
     --with github.com/WeidiDeng/caddy-cloudflare-ip \
     --with github.com/mholt/caddy-dynamicdns \
+    --with github.com/mholt/caddy-ratelimit \
     --with github.com/porech/caddy-maxmind-geolocation \
     --with github.com/hslatman/caddy-crowdsec-bouncer/http \
     --with github.com/hslatman/caddy-crowdsec-bouncer/appsec \
