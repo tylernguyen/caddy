@@ -1,0 +1,13 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets and Env
+.env
+.env.*
+*.pem
+*.key
+
+# Builds
+dist/
+*.log

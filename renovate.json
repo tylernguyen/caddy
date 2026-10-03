@@ -1,0 +1,40 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "packageRules": [
+    {
+      "description": "Caddy (plugins) version watch",
+      "matchManagers": ["dockerfile"],
+      "matchPackageNames": ["caddy"],
+      "enabled": false
+    }
+  ],
+  "customManagers": [
+    {
+      "description": "Caddy version (ARG CADDY_VERSION)",
+      "customType": "regex",
+      "managerFilePatterns": ["/(^|/)Dockerfile$/"],
+      "matchStrings": ["ARG CADDY_VERSION=(?<currentValue>\\S+)"],
+      "depNameTemplate": "caddyserver/caddy",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "^v(?<version>.+)$"
+    },
+    {
+      "description": "Plugins pinned to a tag: --with module@vX.Y.Z",
+      "customType": "regex",
+      "managerFilePatterns": ["/(^|/)Dockerfile$/"],
+      "matchStrings": ["--with (?<depName>\\S+?)@(?<currentValue>v\\d\\S*)"],
+      "datasourceTemplate": "go"
+    },
+    {
+      "description": "Plugins without tags, pinned to a commit: '# renovate: branch=<branch>' above the --with line",
+      "customType": "regex",
+      "managerFilePatterns": ["/(^|/)Dockerfile$/"],
+      "matchStrings": [
+        "# renovate: branch=(?<currentValue>\\S+)\\n\\s*--with (?<depName>\\S+?)@(?<currentDigest>[a-f0-9]{40})"
+      ],
+      "datasourceTemplate": "git-refs",
+      "packageNameTemplate": "https://{{{depName}}}"
+    }
+  ]
+}
