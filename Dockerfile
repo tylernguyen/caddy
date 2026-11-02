@@ -6,7 +6,7 @@ ARG TARGETOS TARGETARCH
 
 RUN CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH xcaddy build \
     --with github.com/caddy-dns/cloudflare@v0.2.4 \
-    --with github.com/hslatman/caddy-crowdsec-bouncer/http@v0.14.1 \
+    --with github.com/hslatman/caddy-crowdsec-bouncer/http@v0.15.0 \
 # renovate: branch=main
     --with github.com/WeidiDeng/caddy-cloudflare-ip@f53b62aa13cb7ad79c8b47aacc3f2f03989b67e5 \
 # renovate: branch=master
