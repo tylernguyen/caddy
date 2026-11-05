@@ -1,5 +1,5 @@
 # Bumped by Renovate (see renovate.json)
-ARG CADDY_VERSION=2.11.7
+ARG CADDY_VERSION=2.11.9
 
 FROM --platform=$BUILDPLATFORM caddy:${CADDY_VERSION}-builder AS builder
 ARG TARGETOS TARGETARCH
